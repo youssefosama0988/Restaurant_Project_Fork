@@ -1,4 +1,5 @@
 package projectpart1;
+
 import org.example.projectpart1.Order;
 import org.example.projectpart1.OrderStatus;
 
@@ -11,14 +12,21 @@ import java.util.Scanner;
 
 /**
  * Represents a waiter in a restaurant, inheriting from the Stuff class.
+ * <p>
+ * This class provides methods for managing orders, including creating, modifying, and canceling orders,
+ * as well as adding bills to orders and viewing all orders.
+ * </p>
+ * <p>
+ * It also contains static methods to access and manage orders from all waiters.
+ * </p>
  */
-public class Waiter extends Stuff {
+public class Waiter extends Stuff implements Employee {
 
 
     /**
      * The list of orders managed by the whole waiters.
      */
-    private static ArrayList<Order> All_orders=new ArrayList<Order>();
+    private static ArrayList<Order> All_orders = new ArrayList<Order>();
 
     /**
      * The list of orders managed by  single waiter.
@@ -29,12 +37,16 @@ public class Waiter extends Stuff {
      * Scanner object for user input.
      */
     Scanner in = new Scanner(System.in);
-    public Waiter() {}
 
-    public Waiter(String name, String address, int contactNumber,int salary, String roles, int dayoff)
-    {
-        super(name, address, contactNumber, salary, roles, dayoff);
+    public Waiter() {
+        orders = new ArrayList<Order>();
     }
+
+    public Waiter(String name, String address, int contactNumber, int salary, String roles, int dayoff) {
+        super(name, address, contactNumber, salary, roles, dayoff);
+        orders = new ArrayList<Order>();
+    }
+
     public static ArrayList<Order> getAll_orders() {
         return All_orders;
     }
@@ -69,8 +81,9 @@ public class Waiter extends Stuff {
         for (int i = 0; i < m; i++) {
             System.out.println("Enter the item you want to add");
             items.add(in.next());
-        }  ArrayList<String> OrderedItems = orders.get(n).getOrderedItems();
-        OrderedItems  .addAll(items);
+        }
+        ArrayList<String> OrderedItems = orders.get(n).getOrderedItems();
+        OrderedItems.addAll(items);
         System.out.println("Enter the number of items you want to remove");
         m = in.nextInt();
         items = new ArrayList<>();
@@ -78,7 +91,7 @@ public class Waiter extends Stuff {
             System.out.println("Enter the item you want to remove");
             items.add(in.next());
         }
-         OrderedItems = orders.get(n).getOrderedItems();
+        OrderedItems = orders.get(n).getOrderedItems();
         OrderedItems.removeAll(items);
     }
 
@@ -101,7 +114,7 @@ public class Waiter extends Stuff {
             System.out.println("Order number: " + i);
             System.out.println("Table number: " + All_orders.get(i).getTableNo());
             System.out.println("Ordered items: ");
-           ArrayList<String> temporder = All_orders.get(i).getOrderedItems();
+            ArrayList<String> temporder = All_orders.get(i).getOrderedItems();
 
             for (int j = 0; j < temporder.size(); j++) {
                 System.out.println(temporder.get(j));
@@ -124,7 +137,7 @@ public class Waiter extends Stuff {
         int n = in.nextInt();
         int m = in.nextInt();
         Date date = new Date();
-        orders.get(n-1).create_bill(m, date, orders.get(n-1).getOrderedItems());
+        orders.get(n - 1).create_bill(m, date, orders.get(n - 1).getOrderedItems());
     }
 
     /**
@@ -134,5 +147,26 @@ public class Waiter extends Stuff {
         System.out.println("Enter the order number you want to delete bill from");
         int n = in.nextInt();
         orders.get(n).setBill(null);
+    }
+
+    /**
+     * Adds a bonus to the salary of the employee.
+     *
+     * @param salary The current salary of the employee to which the bonus will be added.
+     *
+     */
+    @Override
+    public void addBonus(int salary) {
+        this.setSalary(500 + getSalary());
+    }
+
+    /**
+     * Retrieves the working time of the employee.
+     *
+     * @return The number of hours the employee works per day.
+     */
+    @Override
+    public int getWorkingTime() {
+        return 8;
     }
 }

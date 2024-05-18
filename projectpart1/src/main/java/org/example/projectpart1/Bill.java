@@ -18,13 +18,14 @@ public class Bill {
     static int billIncremental = 1;
 
     /** The unique identifier of the bill. */
-    static int billNo;
+     int billNo;
+
 
     /** The ID of the customer associated with the bill. */
     private int customerId;
 
     /** The total price of the items included in the bill. */
-    private Double totalPrice;
+    private Double totalPrice=0.0;
 
     /** The list of items included in the bill. */
     ArrayList<String> items;

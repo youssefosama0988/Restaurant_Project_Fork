@@ -24,6 +24,9 @@ import java.net.URL;
 import java.util.ArrayList;
 import java.util.ResourceBundle;
 
+/**
+ * Controller class for the Animation GUI of the restaurant management system.
+ */
 public class HelloController implements Initializable {
     @FXML
     private ImageView Firstimg;
@@ -35,8 +38,8 @@ public class HelloController implements Initializable {
     private ImageView rightbot;
     @FXML
     private ImageView middleimg;
-@FXML
-        private ChoiceBox <String> choiceBox;
+    @FXML
+    private ChoiceBox<String> choiceBox;
 
     TranslateTransition translate = new TranslateTransition();
     TranslateTransition translateleftbot = new TranslateTransition();
@@ -95,27 +98,34 @@ public class HelloController implements Initializable {
         translaterightbot.play();
     }
     /**********************Start of translation and scaling*****************************************************/
- /************************************************************************************/
-    public void ScaleroutTopright()
-    {
+    /************************************************************************************/
+
+    /**
+     * Scales out the top right image.
+     * <p>
+     * This method initiates a scaling animation to shrink the size of the top right image.
+     * It simultaneously plays translation and rotation animations of other images.
+     * </p>
+     */
+    public void ScaleroutTopright() {
         ScaleTransition scale = new ScaleTransition();
         translate.play();
         translateleftbot.play();
         translateSecond.play();
         translaterightbot.play();
         rotate.play();
-            scale.setNode(Firstimg);
-            scale.setDuration(Duration.millis(1000));
-            scale.setCycleCount(1);
-            scale.setInterpolator(Interpolator.LINEAR);
-            scale.setToX(1);
-            scale.setToY(1);
+        scale.setNode(Firstimg);
+        scale.setDuration(Duration.millis(1000));
+        scale.setCycleCount(1);
+        scale.setInterpolator(Interpolator.LINEAR);
+        scale.setToX(1);
+        scale.setToY(1);
 
-            scale.play();
-
+        scale.play();
 
 
     }
+
     public void ScalerinTopright() {
         ScaleTransition scale = new ScaleTransition();
         translate.pause();
@@ -123,36 +133,42 @@ public class HelloController implements Initializable {
         translateSecond.pause();
         translaterightbot.pause();
         rotate.pause();
-            scale.setNode(Firstimg);
-            scale.setDuration(Duration.millis(1000));
-            scale.setCycleCount(1);
-            scale.setInterpolator(Interpolator.LINEAR);
-            scale.setToX(1.5);
-            scale.setToY(1.5);
-            scale.play();
+        scale.setNode(Firstimg);
+        scale.setDuration(Duration.millis(1000));
+        scale.setCycleCount(1);
+        scale.setInterpolator(Interpolator.LINEAR);
+        scale.setToX(1.5);
+        scale.setToY(1.5);
+        scale.play();
     }
-/*middle img*/
-public void ScaleroutMid()
-{
-    ScaleTransition scale = new ScaleTransition();
 
-    translate.play();
-    translateleftbot.play();
-    translateSecond.play();
-    translaterightbot.play();
-    rotate.play();
-    scale.setNode(middleimg);
-    scale.setDuration(Duration.millis(1000));
-    scale.setCycleCount(1);
-    scale.setInterpolator(Interpolator.LINEAR);
-    scale.setToX(1);
-    scale.setToY(1);
+    /**
+     * Scales out the bottom left image.
+     * <p>
+     * This method initiates a scaling animation to shrink the size of the Middle image.
+     * It simultaneously plays translation and rotation animations of other images.
+     * </p>
+     */
+    public void ScaleroutMid() {
+        ScaleTransition scale = new ScaleTransition();
 
-    scale.play();
+        translate.play();
+        translateleftbot.play();
+        translateSecond.play();
+        translaterightbot.play();
+        rotate.play();
+        scale.setNode(middleimg);
+        scale.setDuration(Duration.millis(1000));
+        scale.setCycleCount(1);
+        scale.setInterpolator(Interpolator.LINEAR);
+        scale.setToX(1);
+        scale.setToY(1);
+
+        scale.play();
 
 
+    }
 
-}
     public void ScalerinMid() {
         ScaleTransition scale = new ScaleTransition();
         translate.pause();
@@ -169,28 +185,33 @@ public void ScaleroutMid()
         scale.play();
     }
 
-/* top left img*/
-public void ScaleroutTopleft()
-{
-    ScaleTransition scale = new ScaleTransition();
+    /**
+     * Scales out the bottom left image.
+     * <p>
+     * This method initiates a scaling animation to shrink the size of the Top left image.
+     * It simultaneously plays translation and rotation animations of other images.
+     * </p>
+     */
+    public void ScaleroutTopleft() {
+        ScaleTransition scale = new ScaleTransition();
 
-    translate.play();
-    translateleftbot.play();
-    translateSecond.play();
-    translaterightbot.play();
-    rotate.play();
-    scale.setNode(img2);
-    scale.setDuration(Duration.millis(1000));
-    scale.setCycleCount(1);
-    scale.setInterpolator(Interpolator.LINEAR);
-    scale.setToX(1);
-    scale.setToY(1);
+        translate.play();
+        translateleftbot.play();
+        translateSecond.play();
+        translaterightbot.play();
+        rotate.play();
+        scale.setNode(img2);
+        scale.setDuration(Duration.millis(1000));
+        scale.setCycleCount(1);
+        scale.setInterpolator(Interpolator.LINEAR);
+        scale.setToX(1);
+        scale.setToY(1);
 
-    scale.play();
+        scale.play();
 
 
+    }
 
-}
     public void ScalerinTopleft() {
         ScaleTransition scale = new ScaleTransition();
         translate.pause();
@@ -207,10 +228,14 @@ public void ScaleroutTopleft()
         scale.play();
     }
 
-
-    /* bottom left img*/
-    public void ScaleroutBotLeft()
-    {
+    /**
+     * Scales out the bottom left image.
+     * <p>
+     * This method initiates a scaling animation to shrink the size of the bottom left image.
+     * It simultaneously plays translation and rotation animations of other images.
+     * </p>
+     */
+    public void ScaleroutBotLeft() {
         ScaleTransition scale = new ScaleTransition();
 
         translate.play();
@@ -228,8 +253,8 @@ public void ScaleroutTopleft()
         scale.play();
 
 
-
     }
+
     public void ScalerinBotLeft() {
         ScaleTransition scale = new ScaleTransition();
         translate.pause();
@@ -247,9 +272,14 @@ public void ScaleroutTopleft()
     }
 
 
-    /* bottom right img*/
-    public void ScaleroutBotRight()
-    {
+    /**
+     * Scales out the bottom left image.
+     * <p>
+     * This method initiates a scaling animation to shrink the size of the bottom right image.
+     * It simultaneously plays translation and rotation animations of other images.
+     * </p>
+     */
+    public void ScaleroutBotRight() {
         ScaleTransition scale = new ScaleTransition();
 
         translate.play();
@@ -267,8 +297,8 @@ public void ScaleroutTopleft()
         scale.play();
 
 
-
     }
+
     public void ScalerinBotRight() {
         ScaleTransition scale = new ScaleTransition();
         translate.pause();
@@ -286,14 +316,12 @@ public void ScaleroutTopleft()
     }
 
 
-
 /**********************end of translation and scaling*****************************************************/
     /************************************************************************/
 
     private Stage stage;
     private Scene scene;
     private Parent root;
-
 
 
     public void switchToScene2(ActionEvent event) throws IOException {
